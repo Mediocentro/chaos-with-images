@@ -1,10 +1,14 @@
+import { QuestItem } from "./quest-item";
+
 export interface LocationTask {
     id: Number;
-    name: String;
-    imagePath: String;
-    riddle: String;
+    name: string;
+    location: string;
+    imagePath: string;
+    riddleHtml: string;
     leftChoice?: Number;
     rightChoice?: Number;
-    questItemId?: Number;
-    correctAnswer: String;
+    questItem?: QuestItem;
+    correctAnswer: string;
+    successTextHtml: string;
 }

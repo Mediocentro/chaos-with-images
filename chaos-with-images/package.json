@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "base-64": "^1.0.0",
+    "dompurify": "^3.0.1",
     "primeflex": "^3.2.1",
     "primeicons": "^6.0.1",
     "primereact": "^8.6.1",
@@ -16,6 +18,8 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@types/base-64": "^1.0.0",
+    "@types/dompurify": "^3.0.1",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",

@@ -7,49 +7,54 @@ import "primeicons/primeicons.css"; //icons
 import "primeflex/primeflex.css";
 
 import "./Riddle.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { LocationTask } from "../../models/location-task";
+
+import DomPurifiedUtil from "../../utils/DomPurifiedUtil";
 
 const Riddle = (props: any) => {
+  const riddlesData: Array<LocationTask> = props.riddlesData;
   const [value, setValue] = useState("");
+  const [riddle, setRiddleData] = useState(
+    fetchLocationTaskById(props.initialRiddlePosition)
+  );
 
-  function handleClick(inputText: String): void {
+  function fetchLocationTaskById(id: Number): LocationTask | undefined {
+    return riddlesData.filter((riddle) => riddle.id === id).at(0);
+  }
+
+  function fetchLocationById(id: Number): string | undefined {
+    return riddlesData.filter((riddle) => riddle.id === id).at(0)?.location;
+  }
+
+  function handleClick(inputText: string): void {
     props.onClick(inputText);
   }
 
-  useEffect(() => {
-    console.log(props.riddleSolved);
-  }, [props.riddleSolved]);
+  function handleLocationSwitch(locationId: Number | undefined): void {
+    if (locationId) {
+      setRiddleData(fetchLocationTaskById(locationId));
+      setValue("");
+      props.onLocationSwitch();
+    }
+  }
 
   return (
     <div>
       <div>
-        <img src="innkeeper.jpg" className="logo" alt="Riddle" />
+        <img src={riddle?.imagePath} className="logo" alt="Riddle" />
       </div>
       <div>
-        <h2>Innkeeper</h2>
+        <h2>{riddle?.name}</h2>
         {!props.riddleSolved && (
-          <p>
-            I am a challenge for every developer, <br /> Yet without me, their
-            code is an unsolved puzzle. <br /> I am given before the product
-            launch, <br /> And if you fail me, the results will be a blow.
-            <br />
-            <br /> What am I?
-          </p>
+          <DomPurifiedUtil
+            htmlContent={riddle?.riddleHtml || ""}
+          ></DomPurifiedUtil>
         )}
         {props.riddleSolved && (
-          <p>
-            Well done traveller! <br />
-            Now you have the following jobs to choose from:
-            <br />
-            <i>
-              Protect the village of Tension Kimbap (name TBD) from the Abyss
-              Order
-            </i>
-            <br />
-            <i>Help a farmer plant melons in PewPew Gully</i>
-            <br />
-            Make your choice!
-          </p>
+          <DomPurifiedUtil
+            htmlContent={riddle?.successTextHtml || ""}
+          ></DomPurifiedUtil>
         )}
       </div>
       {!props.riddleSolved && (
@@ -74,18 +79,22 @@ const Riddle = (props: any) => {
       )}
       {props.riddleSolved && (
         <div className="card">
-          <Button
-            icon="pi pi-arrow-left"
-            className="ml-2"
-            label="Tension Kimbap"
-            onClick={() => handleClick(value)}
-          ></Button>
-          <Button
-            icon="pi pi-arrow-right"
-            className="ml-2"
-            label="PewPew Gully"
-            onClick={() => handleClick(value)}
-          ></Button>
+          {riddle?.leftChoice && (
+            <Button
+              icon="pi pi-arrow-left"
+              className="ml-2"
+              label={fetchLocationById(riddle.leftChoice)}
+              onClick={() => handleLocationSwitch(riddle.leftChoice)}
+            ></Button>
+          )}
+          {riddle?.rightChoice && (
+            <Button
+              icon="pi pi-arrow-right"
+              className="ml-2"
+              label={fetchLocationById(riddle.rightChoice)}
+              onClick={() => handleLocationSwitch(riddle.rightChoice)}
+            ></Button>
+          )}
         </div>
       )}
     </div>

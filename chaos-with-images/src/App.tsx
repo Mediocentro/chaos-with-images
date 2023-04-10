@@ -10,16 +10,23 @@ import "primeflex/primeflex.css";
 
 import "./App.css";
 import Riddle from "./pages/riddle/Riddle";
+import { LocationTask } from "./models/location-task";
+import data from "./assets/data.json";
+
+import { encode } from "base-64";
 
 function App() {
   const toast = useRef<Toast>(null);
   const op = useRef<OverlayPanel>(null);
 
+  const riddlesData: Array<LocationTask> = JSON.parse(
+    JSON.stringify(data["location-tasks"])
+  );
+
   const [isRiddleSolved, setRiddleSolved] = useState(false);
 
-  function checkValidity(inputText: String): void {
-    console.log(inputText);
-    if (inputText === "test") {
+  function checkValidity(inputText: string): void {
+    if (encode(inputText) === riddlesData.at(0)?.correctAnswer) {
       setRiddleSolved(true);
       showSuccess("Onto the next job");
     } else {
@@ -27,7 +34,7 @@ function App() {
     }
   }
 
-  const showSuccess = (inputText: String): void => {
+  const showSuccess = (inputText: string): void => {
     toast.current?.show({
       severity: "success",
       summary: "Correct!",
@@ -58,23 +65,25 @@ function App() {
           Welcome on the quest to unlock a deep secret!
           <br />
           Rules of the game are very simple: <br />
-          <ul>
-            <li>
-              There are 10 items to collect which will guide you to key to your
-              treasure
-            </li>
-            <li>
-              There are a few jobs that you can do along the way to get these
-              items
-            </li>
-          </ul>
-          Start by answering my riddle!
         </p>
+        <ul>
+          <li>
+            There are 10 items to collect which will guide you to key to your
+            treasure
+          </li>
+          <li>
+            There are a few jobs that you can do along the way to get these
+            items
+          </li>
+        </ul>
+        <p>Start by answering my riddle!</p>
       </OverlayPanel>
       <Riddle
-        onClick={(value: String) => checkValidity(value)}
-        hidden={false}
+        onClick={(value: string) => checkValidity(value)}
+        onLocationSwitch={() => setRiddleSolved(false)}
         riddleSolved={isRiddleSolved}
+        initialRiddlePosition={1}
+        riddlesData={riddlesData}
       />
     </div>
   );
