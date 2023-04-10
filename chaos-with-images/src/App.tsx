@@ -1,55 +1,83 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { useRef, useState } from "react";
+import { Toast } from "primereact/toast";
+import { OverlayPanel } from "primereact/overlaypanel";
+import { Button } from "primereact/button";
 
-import { Button } from 'primereact/button';
-import { InputText } from 'primereact/inputtext';
+import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
+import "primereact/resources/primereact.min.css"; //core css
+import "primeicons/primeicons.css"; //icons
+import "primeflex/primeflex.css";
 
-import 'primereact/resources/themes/lara-light-indigo/theme.css'; //theme
-import 'primereact/resources/primereact.min.css'; //core css
-import 'primeicons/primeicons.css'; //icons
-import 'primeflex/primeflex.css';
-
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import Riddle from "./pages/riddle/Riddle";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const toast = useRef<Toast>(null);
+  const op = useRef<OverlayPanel>(null);
+
+  const [isRiddleSolved, setRiddleSolved] = useState(false);
+
+  function checkValidity(inputText: String): void {
+    console.log(inputText);
+    if (inputText === "test") {
+      setRiddleSolved(true);
+      showSuccess("Onto the next job");
+    } else {
+      showFailure();
+    }
+  }
+
+  const showSuccess = (inputText: String): void => {
+    toast.current?.show({
+      severity: "success",
+      summary: "Correct!",
+      detail: inputText,
+    });
+  };
+
+  const showFailure = (): void => {
+    toast.current?.show({
+      severity: "error",
+      summary: "Incorrect :(",
+      detail: "Please Try Again",
+    });
+  };
 
   return (
     <div className="App">
-    <div>
-      <a href="https://vitejs.dev" target="_blank">
-        <img src={viteLogo} className="logo" alt="Vite logo" />
-      </a>
-      <a href="https://reactjs.org" target="_blank">
-        <img src={reactLogo} className="logo react" alt="React logo" />
-      </a>
-    </div>
-    <h1>Vite + PrimeReact</h1>
-    <div>
-      <h2>PrimeReact Typescript Issue Template</h2>
-      <p>
-        Please create a test case and attach the link to the to your github
-        issue report.
-      </p>
-    </div>
-    <div className="card">
+      <Toast ref={toast} />
       <Button
-        icon="pi pi-plus"
-        className="mr-2"
-        label="Increment"
-        onClick={() => setCount((count) => count + 1)}
-      ></Button>
-      <InputText value={count} />
-      <p>
-        Edit <code>src/App.tsx</code> and save to test PrimeReact
-      </p>
+        type="button"
+        icon="pi pi-info-circle"
+        label="From the office of Innkeeper"
+        onClick={(e) => op.current?.toggle(e)}
+        className="mb-3"
+      />
+      <OverlayPanel ref={op}>
+        <p>
+          Welcome on the quest to unlock a deep secret!
+          <br />
+          Rules of the game are very simple: <br />
+          <ul>
+            <li>
+              There are 10 items to collect which will guide you to key to your
+              treasure
+            </li>
+            <li>
+              There are a few jobs that you can do along the way to get these
+              items
+            </li>
+          </ul>
+          Start by answering my riddle!
+        </p>
+      </OverlayPanel>
+      <Riddle
+        onClick={(value: String) => checkValidity(value)}
+        hidden={false}
+        riddleSolved={isRiddleSolved}
+      />
     </div>
-    <p className="read-the-docs">
-      Click on the Vite and React logos to learn more
-    </p>
-  </div>
-  )
+  );
 }
 
-export default App
+export default App;
