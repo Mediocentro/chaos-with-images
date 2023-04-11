@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Innkeeper",
-      "imagePath": "innkeeper.jpg",
+      "imagePath": "https://drive.google.com/uc?export=view&id=12lIeu06Rq4hSqLXTmxLkUs2hDKtUURiT",
       "location": "Pewter City",
       "riddleHtml": "<p>I am a challenge for every developer, <br /> Yet without me, their code is an unsolved puzzle. <br /> I am given before the product launch, <br /> And if you me, the results will be a blow. <br /> <br /> What am I?</p>",
       "leftChoice": 2,
@@ -18,7 +18,7 @@
     {
       "id": 2,
       "name": "Bard",
-      "imagePath": "innkeeper.jpg",
+      "imagePath": "https://drive.google.com/uc?export=view&id=12lIeu06Rq4hSqLXTmxLkUs2hDKtUURiT",
       "riddleHtml": "<p>I am a challenge for every developer, <br /> Yet without me, their code is an unsolved puzzle. <br /> I am given before the product launch, <br /> And if you me, the results will be a blow. <br /> <br /> What am I?</p>",
       "leftChoice": 4,
       "rightChoice": 5,
@@ -33,7 +33,7 @@
     {
       "id": 3,
       "name": "Scribe",
-      "imagePath": "innkeeper.jpg",
+      "imagePath": "https://drive.google.com/uc?export=view&id=12lIeu06Rq4hSqLXTmxLkUs2hDKtUURiT",
       "riddleHtml": "<p>I am a challenge for every developer, <br /> Yet without me, their code is an unsolved puzzle. <br /> I am given before the product launch, <br /> And if you me, the results will be a blow. <br /> <br /> What am I?</p>",
       "leftChoice": 5,
       "rightChoice": 6,
@@ -48,7 +48,7 @@
     {
       "id": 4,
       "name": "Apothecary",
-      "imagePath": "innkeeper.jpg",
+      "imagePath": "https://drive.google.com/uc?export=view&id=12lIeu06Rq4hSqLXTmxLkUs2hDKtUURiT",
       "riddleHtml": "<p>I am a challenge for every developer, <br /> Yet without me, their code is an unsolved puzzle. <br /> I am given before the product launch, <br /> And if you me, the results will be a blow. <br /> <br /> What am I?</p>",
       "leftChoice": 14,
       "rightChoice": 7,
@@ -63,7 +63,7 @@
     {
       "id": 5,
       "name": "Swordsman",
-      "imagePath": "innkeeper.jpg",
+      "imagePath": "https://drive.google.com/uc?export=view&id=12lIeu06Rq4hSqLXTmxLkUs2hDKtUURiT",
       "riddleHtml": "<p>I am a challenge for every developer, <br /> Yet without me, their code is an unsolved puzzle. <br /> I am given before the product launch, <br /> And if you me, the results will be a blow. <br /> <br /> What am I?</p>",
       "leftChoice": 8,
       "rightChoice": 6,
@@ -78,7 +78,7 @@
     {
       "id": 6,
       "name": "Farmer",
-      "imagePath": "innkeeper.jpg",
+      "imagePath": "https://drive.google.com/uc?export=view&id=12lIeu06Rq4hSqLXTmxLkUs2hDKtUURiT",
       "riddleHtml": "<p>I am a challenge for every developer, <br /> Yet without me, their code is an unsolved puzzle. <br /> I am given before the product launch, <br /> And if you me, the results will be a blow. <br /> <br /> What am I?</p>",
       "leftChoice": 2,
       "rightChoice": 9,
@@ -93,7 +93,7 @@
     {
       "id": 7,
       "name": "Baker",
-      "imagePath": "innkeeper.jpg",
+      "imagePath": "https://drive.google.com/uc?export=view&id=12lIeu06Rq4hSqLXTmxLkUs2hDKtUURiT",
       "riddleHtml": "<p>I am a challenge for every developer, <br /> Yet without me, their code is an unsolved puzzle. <br /> I am given before the product launch, <br /> And if you me, the results will be a blow. <br /> <br /> What am I?</p>",
       "leftChoice": 9,
       "rightChoice": 8,
@@ -108,7 +108,7 @@
     {
       "id": 8,
       "name": "Banker",
-      "imagePath": "innkeeper.jpg",
+      "imagePath": "https://drive.google.com/uc?export=view&id=12lIeu06Rq4hSqLXTmxLkUs2hDKtUURiT",
       "riddleHtml": "<p>I am a challenge for every developer, <br /> Yet without me, their code is an unsolved puzzle. <br /> I am given before the product launch, <br /> And if you me, the results will be a blow. <br /> <br /> What am I?</p>",
       "leftChoice": 11,
       "rightChoice": 10,
@@ -123,7 +123,7 @@
     {
       "id": 9,
       "name": "Traveller",
-      "imagePath": "innkeeper.jpg",
+      "imagePath": "https://drive.google.com/uc?export=view&id=12lIeu06Rq4hSqLXTmxLkUs2hDKtUURiT",
       "riddleHtml": "<p>I am a challenge for every developer, <br /> Yet without me, their code is an unsolved puzzle. <br /> I am given before the product launch, <br /> And if you me, the results will be a blow. <br /> <br /> What am I?</p>",
       "leftChoice": 14,
       "rightChoice": 12,
@@ -138,7 +138,7 @@
     {
       "id": 10,
       "name": "Sorceress",
-      "imagePath": "innkeeper.jpg",
+      "imagePath": "https://drive.google.com/uc?export=view&id=12lIeu06Rq4hSqLXTmxLkUs2hDKtUURiT",
       "riddleHtml": "<p>I am a challenge for every developer, <br /> Yet without me, their code is an unsolved puzzle. <br /> I am given before the product launch, <br /> And if you me, the results will be a blow. <br /> <br /> What am I?</p>",
       "leftChoice": 13,
       "rightChoice": 14,
@@ -153,7 +153,7 @@
     {
       "id": 11,
       "name": "Florist",
-      "imagePath": "innkeeper.jpg",
+      "imagePath": "https://drive.google.com/uc?export=view&id=12lIeu06Rq4hSqLXTmxLkUs2hDKtUURiT",
       "riddleHtml": "<p>I am a challenge for every developer, <br /> Yet without me, their code is an unsolved puzzle. <br /> I am given before the product launch, <br /> And if you me, the results will be a blow. <br /> <br /> What am I?</p>",
       "leftChoice": 13,
       "rightChoice": 12,
@@ -168,7 +168,7 @@
     {
       "id": 12,
       "name": "Portrait Painter",
-      "imagePath": "innkeeper.jpg",
+      "imagePath": "https://drive.google.com/uc?export=view&id=12lIeu06Rq4hSqLXTmxLkUs2hDKtUURiT",
       "riddleHtml": "<p>I am a challenge for every developer, <br /> Yet without me, their code is an unsolved puzzle. <br /> I am given before the product launch, <br /> And if you me, the results will be a blow. <br /> <br /> What am I?</p>",
       "leftChoice": 14,
       "rightChoice": 6,
@@ -183,7 +183,7 @@
     {
       "id": 13,
       "name": "Forest Witch",
-      "imagePath": "innkeeper.jpg",
+      "imagePath": "https://drive.google.com/uc?export=view&id=12lIeu06Rq4hSqLXTmxLkUs2hDKtUURiT",
       "riddleHtml": "<p>I am a challenge for every developer, <br /> Yet without me, their code is an unsolved puzzle. <br /> I am given before the product launch, <br /> And if you me, the results will be a blow. <br /> <br /> What am I?</p>",
       "leftChoice": 14,
       "rightChoice": 10,
@@ -198,7 +198,7 @@
     {
       "id": 14,
       "name": "Final Boss",
-      "imagePath": "innkeeper.jpg",
+      "imagePath": "https://drive.google.com/uc?export=view&id=12lIeu06Rq4hSqLXTmxLkUs2hDKtUURiT",
       "riddleHtml": "<p>I am a challenge for every developer, <br /> Yet without me, their code is an unsolved puzzle. <br /> I am given before the product launch, <br /> And if you me, the results will be a blow. <br /> <br /> What am I?</p>",
       "questItem": {
         "name": "Book",

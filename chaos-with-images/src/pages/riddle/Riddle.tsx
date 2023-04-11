@@ -42,7 +42,11 @@ const Riddle = (props: any) => {
   return (
     <div>
       <div>
-        <img src={riddle?.imagePath} className="logo" alt="Riddle" />
+        <img
+          src={riddle?.imagePath}
+          className="logo max-w-full h-auto"
+          alt="Riddle"
+        />
       </div>
       <div>
         <h2>{riddle?.name}</h2>
