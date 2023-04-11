@@ -11,4 +11,5 @@ export interface LocationTask {
     questItem?: QuestItem;
     correctAnswer: string;
     successTextHtml: string;
+    farewellMessage: string;
 }

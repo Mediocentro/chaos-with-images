@@ -13,7 +13,8 @@
         "id": 1
       },
       "correctAnswer": "dGVzdA==",
-      "successTextHtml": "Well done traveller! <br/> <br /> Now you have the following jobs to choose from: <br /> <i> Protect the village of Tension Kimbap (name TBD) from the Abyss Order </i> <br /><i>Help a farmer plant melons in PewPew Gully</i><br/ ><br /> Make your choice!"
+      "successTextHtml": "Well done traveller! <br/> <br /> Now you have the following jobs to choose from: <br /> <i> Protect the village of Tension Kimbap (name TBD) from the Abyss Order </i> <br /><i>Help a farmer plant melons in PewPew Gully</i><br/ ><br /> Make your choice!",
+      "farewellMessage": "We'll miss you!"
     },
     {
       "id": 2,
@@ -28,7 +29,8 @@
       },
       "correctAnswer": "dGVzdA==",
       "successTextHtml": "Well done traveller! <br/> <br /> Now you have the following jobs to choose from: <br /> <i> Protect the village of Tension Kimbap (name TBD) from the Abyss Order </i> <br /><i>Help a farmer plant melons in PewPew Gully</i><br/ ><br /> Make your choice!",
-      "location": "Bangalore"
+      "location": "Bangalore",
+      "farewellMessage": "We'll miss you!"
     },
     {
       "id": 3,
@@ -43,7 +45,8 @@
       },
       "correctAnswer": "dGVzdA==",
       "successTextHtml": "Well done traveller! <br/> <br /> Now you have the following jobs to choose from: <br /> <i> Protect the village of Tension Kimbap (name TBD) from the Abyss Order </i> <br /><i>Help a farmer plant melons in PewPew Gully</i><br/ ><br /> Make your choice!",
-      "location": "Delhi"
+      "location": "Delhi",
+      "farewellMessage": "We'll miss you!"
     },
     {
       "id": 4,
@@ -58,7 +61,8 @@
       },
       "correctAnswer": "dGVzdA==",
       "successTextHtml": "Well done traveller! <br/> <br /> Now you have the following jobs to choose from: <br /> <i> Protect the village of Tension Kimbap (name TBD) from the Abyss Order </i> <br /><i>Help a farmer plant melons in PewPew Gully</i><br/ ><br /> Make your choice!",
-      "location": "Chennai"
+      "location": "Chennai",
+      "farewellMessage": "We'll miss you!"
     },
     {
       "id": 5,
@@ -73,7 +77,8 @@
       },
       "correctAnswer": "dGVzdA==",
       "successTextHtml": "Well done traveller! <br/> <br /> Now you have the following jobs to choose from: <br /> <i> Protect the village of Tension Kimbap (name TBD) from the Abyss Order </i> <br /><i>Help a farmer plant melons in PewPew Gully</i><br/ ><br /> Make your choice!",
-      "location": "Hyderabad"
+      "location": "Hyderabad",
+      "farewellMessage": "We'll miss you!"
     },
     {
       "id": 6,
@@ -88,7 +93,8 @@
       },
       "correctAnswer": "dGVzdA==",
       "successTextHtml": "Well done traveller! <br/> <br /> Now you have the following jobs to choose from: <br /> <i> Protect the village of Tension Kimbap (name TBD) from the Abyss Order </i> <br /><i>Help a farmer plant melons in PewPew Gully</i><br/ ><br /> Make your choice!",
-      "location": "Mumbai"
+      "location": "Mumbai",
+      "farewellMessage": "We'll miss you!"
     },
     {
       "id": 7,
@@ -103,7 +109,8 @@
       },
       "correctAnswer": "dGVzdA==",
       "successTextHtml": "Well done traveller! <br/> <br /> Now you have the following jobs to choose from: <br /> <i> Protect the village of Tension Kimbap (name TBD) from the Abyss Order </i> <br /><i>Help a farmer plant melons in PewPew Gully</i><br/ ><br /> Make your choice!",
-      "location": "Kolkata"
+      "location": "Kolkata",
+      "farewellMessage": "We'll miss you!"
     },
     {
       "id": 8,
@@ -118,7 +125,8 @@
       },
       "correctAnswer": "dGVzdA==",
       "successTextHtml": "Well done traveller! <br/> <br /> Now you have the following jobs to choose from: <br /> <i> Protect the village of Tension Kimbap (name TBD) from the Abyss Order </i> <br /><i>Help a farmer plant melons in PewPew Gully</i><br/ ><br /> Make your choice!",
-      "location": "Nagpur"
+      "location": "Nagpur",
+      "farewellMessage": "We'll miss you!"
     },
     {
       "id": 9,
@@ -133,7 +141,8 @@
       },
       "correctAnswer": "dGVzdA==",
       "successTextHtml": "Well done traveller! <br/> <br /> Now you have the following jobs to choose from: <br /> <i> Protect the village of Tension Kimbap (name TBD) from the Abyss Order </i> <br /><i>Help a farmer plant melons in PewPew Gully</i><br/ ><br /> Make your choice!",
-      "location": "Chandigarh"
+      "location": "Chandigarh",
+      "farewellMessage": "We'll miss you!"
     },
     {
       "id": 10,
@@ -148,7 +157,8 @@
       },
       "correctAnswer": "dGVzdA==",
       "successTextHtml": "Well done traveller! <br/> <br /> Now you have the following jobs to choose from: <br /> <i> Protect the village of Tension Kimbap (name TBD) from the Abyss Order </i> <br /><i>Help a farmer plant melons in PewPew Gully</i><br/ ><br /> Make your choice!",
-      "location": "Patna"
+      "location": "Patna",
+      "farewellMessage": "We'll miss you!"
     },
     {
       "id": 11,
@@ -163,7 +173,8 @@
       },
       "correctAnswer": "dGVzdA==",
       "successTextHtml": "Well done traveller! <br/> <br /> Now you have the following jobs to choose from: <br /> <i> Protect the village of Tension Kimbap (name TBD) from the Abyss Order </i> <br /><i>Help a farmer plant melons in PewPew Gully</i><br/ ><br /> Make your choice!",
-      "location": "Srinagar"
+      "location": "Srinagar",
+      "farewellMessage": "We'll miss you!"
     },
     {
       "id": 12,
@@ -178,7 +189,8 @@
       },
       "correctAnswer": "dGVzdA==",
       "successTextHtml": "Well done traveller! <br/> <br /> Now you have the following jobs to choose from: <br /> <i> Protect the village of Tension Kimbap (name TBD) from the Abyss Order </i> <br /><i>Help a farmer plant melons in PewPew Gully</i><br/ ><br /> Make your choice!",
-      "location": "Jaipur"
+      "location": "Jaipur",
+      "farewellMessage": "We'll miss you!"
     },
     {
       "id": 13,
@@ -193,7 +205,8 @@
       },
       "correctAnswer": "dGVzdA==",
       "successTextHtml": "Well done traveller! <br/> <br /> Now you have the following jobs to choose from: <br /> <i> Protect the village of Tension Kimbap (name TBD) from the Abyss Order </i> <br /><i>Help a farmer plant melons in PewPew Gully</i><br/ ><br /> Make your choice!",
-      "location": "Allahabad"
+      "location": "Allahabad",
+      "farewellMessage": "We'll miss you!"
     },
     {
       "id": 14,
@@ -206,7 +219,8 @@
       },
       "correctAnswer": "dGVzdA==",
       "successTextHtml": "Well done traveller! <br/> <br /> Now you have the following jobs to choose from: <br /> <i> Protect the village of Tension Kimbap (name TBD) from the Abyss Order </i> <br /><i>Help a farmer plant melons in PewPew Gully</i><br/ ><br /> Make your choice!",
-      "location": "Shimla"
+      "location": "Shimla",
+      "farewellMessage": "We'll miss you!"
     }
   ]
 }
