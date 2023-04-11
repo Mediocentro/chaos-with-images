@@ -23,10 +23,16 @@ function App() {
     JSON.stringify(data["location-tasks"])
   );
 
+  const riddlesMap: Map<Number, LocationTask> = new Map(
+    riddlesData.map((locationTask) => {
+      return [locationTask.id, locationTask];
+    })
+  );
+
   const [isRiddleSolved, setRiddleSolved] = useState(false);
 
-  function checkValidity(inputText: string): void {
-    if (encode(inputText) === riddlesData.at(0)?.correctAnswer) {
+  function checkValidity(inputText: string, riddleId: Number): void {
+    if (encode(inputText) === riddlesMap.get(riddleId)?.correctAnswer) {
       setRiddleSolved(true);
       showSuccess("Onto the next job");
     } else {
@@ -79,7 +85,7 @@ function App() {
         <p>Start by answering my riddle!</p>
       </OverlayPanel>
       <Riddle
-        onClick={(value: string) => checkValidity(value)}
+        onClick={(value: string, id: Number) => checkValidity(value, id)}
         onLocationSwitch={() => setRiddleSolved(false)}
         riddleSolved={isRiddleSolved}
         initialRiddlePosition={1}

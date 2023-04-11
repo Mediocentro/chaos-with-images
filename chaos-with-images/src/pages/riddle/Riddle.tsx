@@ -29,8 +29,8 @@ const Riddle = (props: any) => {
     return riddlesData.filter((riddle) => riddle.id === id).at(0)?.location;
   }
 
-  function handleClick(inputText: string): void {
-    props.onClick(inputText);
+  function handleClick(inputText: string, riddleId: Number | undefined): void {
+    props.onClick(inputText, riddleId);
   }
 
   function handleLocationSwitch(locationId: Number | undefined): void {
@@ -48,6 +48,8 @@ const Riddle = (props: any) => {
           src={riddle?.imagePath}
           className="logo max-w-full h-auto"
           alt="Riddle"
+          height="1200"
+          width="630"
         />
       </div>
       <div>
@@ -83,7 +85,7 @@ const Riddle = (props: any) => {
                 icon="pi pi-check"
                 className="ml-2"
                 label="Check my Answer"
-                onClick={() => handleClick(value)}
+                onClick={() => handleClick(value, riddle?.id)}
               ></Button>
             </div>{" "}
           </div>
