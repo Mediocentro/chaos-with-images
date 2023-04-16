@@ -1,6 +1,5 @@
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
-import { Badge } from "primereact/badge";
 
 import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
@@ -13,6 +12,7 @@ import { LocationTask } from "../../models/location-task";
 
 import DomPurifiedUtil from "../../utils/DomPurifiedUtil";
 import FarewellMessage from "../farewell-message/FarewellMessage";
+import QuestItemDisplay from "../quest-item-display/QuestItemDisplay";
 
 const Riddle = (props: any) => {
   const riddlesData: Array<LocationTask> = props.riddlesData;
@@ -78,7 +78,7 @@ const Riddle = (props: any) => {
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
                 aria-describedby="riddle-help"
-              />{" "}
+              />
             </div>
             <div className="flex-1 md:flex-none flex align-items-center justify-content-center m-2">
               <Button
@@ -87,7 +87,7 @@ const Riddle = (props: any) => {
                 label="Check my Answer"
                 onClick={() => handleClick(value, riddle?.id)}
               ></Button>
-            </div>{" "}
+            </div>
           </div>
           <p>
             <small id="riddle-help" className="read-the-docs">
@@ -121,6 +121,9 @@ const Riddle = (props: any) => {
             )}
           </div>
         </div>
+      )}
+      {props.riddleSolved && props.isNewQuestItem && riddle?.questItem && (
+        <QuestItemDisplay questItem={riddle.questItem} />
       )}
     </div>
   );

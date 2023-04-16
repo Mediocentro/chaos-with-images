@@ -24,8 +24,8 @@
       "leftChoice": 4,
       "rightChoice": 5,
       "questItem": {
-        "name": "Book",
-        "id": 1
+        "name": "Umbrella",
+        "id": 2
       },
       "correctAnswer": "dGVzdA==",
       "successTextHtml": "Well done traveller! <br/> <br /> Now you have the following jobs to choose from: <br /> <i> Protect the village of Tension Kimbap (name TBD) from the Abyss Order </i> <br /><i>Help a farmer plant melons in PewPew Gully</i><br/ ><br /> Make your choice!",
@@ -40,8 +40,8 @@
       "leftChoice": 5,
       "rightChoice": 6,
       "questItem": {
-        "name": "Book",
-        "id": 1
+        "name": "Rabbit",
+        "id": 3
       },
       "correctAnswer": "dGVzdA==",
       "successTextHtml": "Well done traveller! <br/> <br /> Now you have the following jobs to choose from: <br /> <i> Protect the village of Tension Kimbap (name TBD) from the Abyss Order </i> <br /><i>Help a farmer plant melons in PewPew Gully</i><br/ ><br /> Make your choice!",
@@ -56,8 +56,8 @@
       "leftChoice": 14,
       "rightChoice": 7,
       "questItem": {
-        "name": "Book",
-        "id": 1
+        "name": "Goat",
+        "id": 4
       },
       "correctAnswer": "dGVzdA==",
       "successTextHtml": "Well done traveller! <br/> <br /> Now you have the following jobs to choose from: <br /> <i> Protect the village of Tension Kimbap (name TBD) from the Abyss Order </i> <br /><i>Help a farmer plant melons in PewPew Gully</i><br/ ><br /> Make your choice!",
@@ -72,8 +72,8 @@
       "leftChoice": 8,
       "rightChoice": 6,
       "questItem": {
-        "name": "Book",
-        "id": 1
+        "name": "Elephant",
+        "id": 5
       },
       "correctAnswer": "dGVzdA==",
       "successTextHtml": "Well done traveller! <br/> <br /> Now you have the following jobs to choose from: <br /> <i> Protect the village of Tension Kimbap (name TBD) from the Abyss Order </i> <br /><i>Help a farmer plant melons in PewPew Gully</i><br/ ><br /> Make your choice!",
@@ -88,8 +88,8 @@
       "leftChoice": 2,
       "rightChoice": 9,
       "questItem": {
-        "name": "Book",
-        "id": 1
+        "name": "Rolex",
+        "id": 6
       },
       "correctAnswer": "dGVzdA==",
       "successTextHtml": "Well done traveller! <br/> <br /> Now you have the following jobs to choose from: <br /> <i> Protect the village of Tension Kimbap (name TBD) from the Abyss Order </i> <br /><i>Help a farmer plant melons in PewPew Gully</i><br/ ><br /> Make your choice!",

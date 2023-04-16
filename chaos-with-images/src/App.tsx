@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { Toast } from "primereact/toast";
-import { OverlayPanel } from "primereact/overlaypanel";
 import { Button } from "primereact/button";
 
 import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
@@ -14,10 +13,18 @@ import { LocationTask } from "./models/location-task";
 import data from "./assets/data.json";
 
 import { encode } from "base-64";
+import { QuestItem } from "./models/quest-item";
+import InnKeeperOverlay from "./overlay-components/office-innkeeper/InnkeeperOverlay";
+import QuestItemOverlay from "./overlay-components/quest-items-overlay/QuestItemOverlay";
 
 function App() {
   const toast = useRef<Toast>(null);
-  const op = useRef<OverlayPanel>(null);
+
+  const [isNewQuestItem, setIsNewQuestItem] = useState(false);
+  const [questItemIdSet, setQuestItemIdSet] = useState(new Set<Number>());
+  const [questItemData, setQuestItemData] = useState(
+    new Array<QuestItem | undefined>()
+  );
 
   const riddlesData: Array<LocationTask> = JSON.parse(
     JSON.stringify(data["location-tasks"])
@@ -34,10 +41,42 @@ function App() {
   function checkValidity(inputText: string, riddleId: Number): void {
     if (encode(inputText) === riddlesMap.get(riddleId)?.correctAnswer) {
       setRiddleSolved(true);
-      showSuccess("Onto the next job");
+      setQuestItemInfo(riddleId);
+      checkFurtherJobs(riddleId);
     } else {
       showFailure();
     }
+  }
+
+  function setQuestItemInfo(riddleId: Number) {
+    let checkIfQuestItemIsNew: boolean = addQuestItem(
+      riddlesMap.get(riddleId)?.questItem
+    );
+    setIsNewQuestItem(checkIfQuestItemIsNew);
+    if (checkIfQuestItemIsNew) {
+      questItemData.push(riddlesMap.get(riddleId)?.questItem);
+      setQuestItemData(questItemData);
+    }
+  }
+
+  function addQuestItem(questItem: QuestItem | undefined): boolean {
+    if (questItem && !questItemIdSet.has(questItem.id)) {
+      questItemIdSet.add(questItem.id);
+      setQuestItemIdSet(questItemIdSet);
+      return true;
+    }
+    return false;
+  }
+
+  function checkFurtherJobs(riddleId: Number) {
+    if (
+      riddlesMap.get(riddleId)?.leftChoice &&
+      riddlesMap.get(riddleId)?.rightChoice
+    ) {
+      showSuccess("Onto the next job");
+      return;
+    }
+    showSuccess("No more jobs left!");
   }
 
   const showSuccess = (inputText: string): void => {
@@ -56,40 +95,30 @@ function App() {
     });
   };
 
+  function resetStates() {
+    setIsNewQuestItem(false);
+    setRiddleSolved(false);
+  }
+
   return (
     <div className="App">
       <Toast ref={toast} />
-      <Button
-        type="button"
-        icon="pi pi-info-circle"
-        label="From the office of Innkeeper"
-        onClick={(e) => op.current?.toggle(e)}
-        className="mb-3"
-      />
-      <OverlayPanel ref={op}>
-        <p>
-          Welcome on the quest to unlock a deep secret!
-          <br />
-          Rules of the game are very simple: <br />
-        </p>
-        <ul>
-          <li>
-            There are 10 items to collect which will guide you to key to your
-            treasure
-          </li>
-          <li>
-            There are a few jobs that you can do along the way to get these
-            items
-          </li>
-        </ul>
-        <p>Start by answering my riddle!</p>
-      </OverlayPanel>
+      <div className="flex flex-column md:flex-row justify-content-center mb-3">
+        <div className="flex-1 md:flex-none flex align-items-center justify-content-center m-2">
+          <InnKeeperOverlay />
+        </div>
+        <div className="flex-1 md:flex-none flex align-items-center justify-content-center m-2">
+          <QuestItemOverlay questItemData={questItemData} />
+        </div>
+      </div>
+
       <Riddle
         onClick={(value: string, id: Number) => checkValidity(value, id)}
-        onLocationSwitch={() => setRiddleSolved(false)}
+        onLocationSwitch={() => resetStates()}
         riddleSolved={isRiddleSolved}
         initialRiddlePosition={1}
         riddlesData={riddlesData}
+        isNewQuestItem={isNewQuestItem}
       />
     </div>
   );
