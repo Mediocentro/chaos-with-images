@@ -70,13 +70,15 @@ function App() {
 
   function checkFurtherJobs(riddleId: Number) {
     if (
-      riddlesMap.get(riddleId)?.leftChoice &&
-      riddlesMap.get(riddleId)?.rightChoice
+      !(
+        riddlesMap.get(riddleId)?.leftChoice &&
+        riddlesMap.get(riddleId)?.rightChoice
+      )
     ) {
-      showSuccess("Onto the next job");
+      showSuccess("No more jobs left!");
       return;
     }
-    showSuccess("No more jobs left!");
+    showSuccess("Onto the next job");
   }
 
   const showSuccess = (inputText: string): void => {
