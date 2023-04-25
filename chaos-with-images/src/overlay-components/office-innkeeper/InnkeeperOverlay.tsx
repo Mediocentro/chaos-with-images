@@ -13,29 +13,35 @@ const InnKeeperOverlay = (props: Props) => {
       <Button
         type="button"
         icon="pi pi-info-circle"
-        label="From the office of Innkeeper"
+        label="The Innkeepers' Counsel"
         onClick={(e) => {
           op.current?.toggle(e);
           props.onClick();
         }}
       />
       <OverlayPanel ref={op}>
-        <p>
-          Welcome on the quest to unlock a deep secret!
-          <br />
-          Rules of the game are very simple: <br />
-        </p>
-        <ul>
-          <li>
-            There are 10 items to collect which will guide you to key to your
-            treasure
-          </li>
-          <li>
-            There are a few jobs that you can do along the way to get these
-            items
-          </li>
-        </ul>
-        <p>Start by answering my riddle!</p>
+        <div className="w-18rem">
+          <p>
+            Complete Requests to gain Items that will help you unlock the portal
+            out of Impseye.
+            <br />
+            Here are some tips to help you in your way: <br />
+          </p>
+          <ul>
+            <li>All the answers are in lowercase</li>
+            <li>
+              The answers use only letters, not numbers or other characters
+            </li>
+            <li>
+              Some of the answers are more than one word, so be careful about
+              the use of spaces
+            </li>
+            <li>
+              You can always click here if your fotunes are down, like when
+              you're craving chocolate but all you have are hot cross buns.
+            </li>
+          </ul>
+        </div>
       </OverlayPanel>
     </div>
   );
