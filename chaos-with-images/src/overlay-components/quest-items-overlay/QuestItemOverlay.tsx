@@ -13,12 +13,11 @@ interface ItemTemplateItem {
 }
 
 const ItemTemplate = (props: ItemTemplateItem) => {
-  return <div>{props.item && <span>{props.item.name}</span>}</div>;
+  return <>{props.item && <span>{props.item.name}</span>}</>;
 };
 
 const QuestItemOverlay = (props: Props) => {
   const op = useRef<OverlayPanel>(null);
-  console.log(props.questItemData);
   return (
     <div>
       <Button

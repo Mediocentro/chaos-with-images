@@ -2,7 +2,11 @@ import { Button } from "primereact/button";
 import { OverlayPanel } from "primereact/overlaypanel";
 import { useRef } from "react";
 
-const InnKeeperOverlay = () => {
+interface Props {
+  onClick: any;
+}
+
+const InnKeeperOverlay = (props: Props) => {
   const op = useRef<OverlayPanel>(null);
   return (
     <div>
@@ -10,7 +14,10 @@ const InnKeeperOverlay = () => {
         type="button"
         icon="pi pi-info-circle"
         label="From the office of Innkeeper"
-        onClick={(e) => op.current?.toggle(e)}
+        onClick={(e) => {
+          op.current?.toggle(e);
+          props.onClick();
+        }}
       />
       <OverlayPanel ref={op}>
         <p>

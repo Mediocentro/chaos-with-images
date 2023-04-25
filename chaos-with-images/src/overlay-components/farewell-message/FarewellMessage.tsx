@@ -2,6 +2,7 @@ import { Badge } from "primereact/badge";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import { useState } from "react";
+import DomPurifiedUtil from "../../utils/DomPurifiedUtil";
 
 const FarewellMessage = (props: any) => {
   const [read, setRead] = useState(false);
@@ -27,7 +28,7 @@ const FarewellMessage = (props: any) => {
         className="w-6"
         onHide={() => setVisible(false)}
       >
-        {props.message}
+        <DomPurifiedUtil htmlContent={props.message || ""}></DomPurifiedUtil>
       </Dialog>
     </div>
   );

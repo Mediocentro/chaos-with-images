@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { Toast } from "primereact/toast";
-import { Button } from "primereact/button";
 
 import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
@@ -10,12 +9,15 @@ import "primeflex/primeflex.css";
 import "./App.css";
 import Riddle from "./pages/riddle/Riddle";
 import { LocationTask } from "./models/location-task";
-import data from "./assets/data.json";
+import data from "./assets/final_data.json";
 
 import { encode } from "base-64";
 import { QuestItem } from "./models/quest-item";
 import InnKeeperOverlay from "./overlay-components/office-innkeeper/InnkeeperOverlay";
 import QuestItemOverlay from "./overlay-components/quest-items-overlay/QuestItemOverlay";
+import EasterEgg from "./pages/easter-egg/EasterEgg";
+import getRandomNumberInRange from "./utils/RandomNumberGenerator";
+import { fetchLocationById } from "./utils/RiddlesDataUtil";
 
 function App() {
   const toast = useRef<Toast>(null);
@@ -24,6 +26,16 @@ function App() {
   const [questItemIdSet, setQuestItemIdSet] = useState(new Set<Number>());
   const [questItemData, setQuestItemData] = useState(
     new Array<QuestItem | undefined>()
+  );
+  const [easterEggCount, setEasterEggCount] = useState(0);
+  const [initialRiddlePosition, setInitialRiddlePosition] = useState(
+    new Number(1)
+  );
+  const [leftLocationId, setLeftLocationId] = useState(
+    getRandomNumberInRange(2, 13, 1)
+  );
+  const [rightLocationId, setRightLocationId] = useState(
+    getRandomNumberInRange(2, 13, leftLocationId)
   );
 
   const riddlesData: Array<LocationTask> = JSON.parse(
@@ -102,26 +114,48 @@ function App() {
     setRiddleSolved(false);
   }
 
+  function easterEggCountIncrease() {
+    if (easterEggCount === -1) {
+      return;
+    }
+    setEasterEggCount(easterEggCount + 1);
+  }
+
   return (
     <div className="App">
       <Toast ref={toast} />
       <div className="flex flex-column md:flex-row justify-content-center mb-3">
         <div className="flex-1 md:flex-none flex align-items-center justify-content-center m-2">
-          <InnKeeperOverlay />
+          <InnKeeperOverlay onClick={() => easterEggCountIncrease()} />
         </div>
         <div className="flex-1 md:flex-none flex align-items-center justify-content-center m-2">
           <QuestItemOverlay questItemData={questItemData} />
         </div>
       </div>
 
-      <Riddle
-        onClick={(value: string, id: Number) => checkValidity(value, id)}
-        onLocationSwitch={() => resetStates()}
-        riddleSolved={isRiddleSolved}
-        initialRiddlePosition={1}
-        riddlesData={riddlesData}
-        isNewQuestItem={isNewQuestItem}
-      />
+      {(easterEggCount < 3 || easterEggCount == -1) && (
+        <Riddle
+          onClick={(value: string, id: Number) => checkValidity(value, id)}
+          onLocationSwitch={() => resetStates()}
+          riddleSolved={isRiddleSolved}
+          initialRiddlePosition={initialRiddlePosition}
+          riddlesData={riddlesData}
+          isNewQuestItem={isNewQuestItem}
+        />
+      )}
+      {easterEggCount != -1 && easterEggCount == 3 && (
+        <EasterEgg
+          onLocationSelection={(locationId: Number | undefined) => {
+            resetStates();
+            setEasterEggCount(-1);
+            setInitialRiddlePosition(locationId || 1);
+          }}
+          leftLocation={fetchLocationById(riddlesData, leftLocationId)}
+          rightLocation={fetchLocationById(riddlesData, rightLocationId)}
+          leftLocationId={leftLocationId}
+          rightLocationId={rightLocationId}
+        />
+      )}
     </div>
   );
 }

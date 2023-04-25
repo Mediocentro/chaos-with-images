@@ -1,15 +1,16 @@
 import { Button } from "primereact/button";
 import QuestItemDisplay from "../../overlay-components/quest-item-display/QuestItemDisplay";
 import DomPurifiedUtil from "../../utils/DomPurifiedUtil";
-import FarewellMessage from "../farewell-message/FarewellMessage";
+import FarewellMessage from "../../overlay-components/farewell-message/FarewellMessage";
 import { LocationTask } from "../../models/location-task";
 
 interface Props {
   riddle: LocationTask | undefined;
   onClick: any;
-  riddlesData: Array<LocationTask>;
-  leftLocation: string | undefined;
-  rightLocation: string | undefined;
+  leftLocation?: string | undefined;
+  rightLocation?: string | undefined;
+  leftLocationId?: Number;
+  rightLocationId?: Number;
   isNewQuestItem: boolean;
 }
 
@@ -28,23 +29,31 @@ const RiddleSolved = (props: Props) => {
       ></DomPurifiedUtil>
       <div className="card">
         <div className="flex flex-column md:flex-row justify-content-center">
-          {props.riddle?.leftChoice && (
+          {(props.riddle?.leftChoice || props.leftLocationId) && (
             <div className="flex-1 md:flex-none flex align-items-center justify-content-center m-2">
               <Button
                 icon="pi pi-arrow-left"
                 className="ml-2"
                 label={props.leftLocation}
-                onClick={() => handleLocationSwitch(props.riddle?.leftChoice)}
+                onClick={() =>
+                  handleLocationSwitch(
+                    props.riddle?.leftChoice || props.leftLocationId
+                  )
+                }
               ></Button>
             </div>
           )}
-          {props.riddle?.rightChoice && (
+          {(props.riddle?.rightChoice || props.rightLocationId) && (
             <div className="flex-1 md:flex-none flex align-items-center justify-content-center m-2">
               <Button
                 icon="pi pi-arrow-right"
                 className="ml-2"
                 label={props.rightLocation}
-                onClick={() => handleLocationSwitch(props.riddle?.rightChoice)}
+                onClick={() =>
+                  handleLocationSwitch(
+                    props.riddle?.rightChoice || props.rightLocationId
+                  )
+                }
               ></Button>
             </div>
           )}

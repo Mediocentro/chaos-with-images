@@ -1,26 +1,18 @@
 import "./Riddle.css";
 import { useState } from "react";
-import { LocationTask } from "../../models/location-task";
 
 import RiddleUnsolved from "./RiddleUnsolved";
 import RiddleSolved from "./RiddleSolved";
 
+import {
+  fetchLocationTaskById,
+  fetchLocationById,
+} from "../../utils/RiddlesDataUtil";
+
 const Riddle = (props: any) => {
-  const riddlesData: Array<LocationTask> = props.riddlesData;
   const [riddle, setRiddleData] = useState(
-    fetchLocationTaskById(props.initialRiddlePosition)
+    fetchLocationTaskById(props.riddlesData, props.initialRiddlePosition)
   );
-
-  function fetchLocationTaskById(id: Number): LocationTask | undefined {
-    return riddlesData.filter((riddle) => riddle.id === id).at(0);
-  }
-
-  function fetchLocationById(id: Number | undefined): string | undefined {
-    if (id) {
-      return riddlesData.filter((riddle) => riddle.id === id).at(0)?.location;
-    }
-    return;
-  }
 
   function handleClick(inputText: string, riddleId: Number | undefined): void {
     props.onClick(inputText, riddleId);
@@ -28,7 +20,7 @@ const Riddle = (props: any) => {
 
   function handleLocationSwitch(locationId: Number | undefined): void {
     if (locationId) {
-      setRiddleData(fetchLocationTaskById(locationId));
+      setRiddleData(fetchLocationTaskById(props.riddlesData, locationId));
       props.onLocationSwitch();
     }
   }
@@ -56,13 +48,18 @@ const Riddle = (props: any) => {
       {props.riddleSolved && (
         <RiddleSolved
           isNewQuestItem={props.isNewQuestItem}
-          leftLocation={fetchLocationById(riddle?.leftChoice)}
-          rightLocation={fetchLocationById(riddle?.rightChoice)}
+          leftLocation={fetchLocationById(
+            props.riddlesData,
+            riddle?.leftChoice
+          )}
+          rightLocation={fetchLocationById(
+            props.riddlesData,
+            riddle?.rightChoice
+          )}
           onClick={(locationId: Number | undefined) =>
             handleLocationSwitch(locationId)
           }
           riddle={riddle}
-          riddlesData={riddlesData}
         />
       )}
     </div>
