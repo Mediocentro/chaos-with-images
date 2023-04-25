@@ -31,12 +31,8 @@ function App() {
   const [initialRiddlePosition, setInitialRiddlePosition] = useState(
     new Number(1)
   );
-  const [leftLocationId, setLeftLocationId] = useState(
-    getRandomNumberInRange(2, 13, 1)
-  );
-  const [rightLocationId, setRightLocationId] = useState(
-    getRandomNumberInRange(2, 13, leftLocationId)
-  );
+  const leftLocationId = getRandomNumberInRange(2, 13, 1);
+  const rightLocationId = getRandomNumberInRange(2, 13, leftLocationId);
 
   const riddlesData: Array<LocationTask> = JSON.parse(
     JSON.stringify(data["location-tasks"])
@@ -51,7 +47,10 @@ function App() {
   const [isRiddleSolved, setRiddleSolved] = useState(false);
 
   function checkValidity(inputText: string, riddleId: Number): void {
-    if (encode(inputText) === riddlesMap.get(riddleId)?.correctAnswer) {
+    if (
+      encode(inputText.toLowerCase()) ===
+      riddlesMap.get(riddleId)?.correctAnswer
+    ) {
       setRiddleSolved(true);
       setQuestItemInfo(riddleId);
       checkFurtherJobs(riddleId);
@@ -143,7 +142,7 @@ function App() {
           isNewQuestItem={isNewQuestItem}
         />
       )}
-      {easterEggCount != -1 && easterEggCount == 3 && (
+      {easterEggCount != -1 && easterEggCount >= 3 && (
         <EasterEgg
           onLocationSelection={(locationId: Number | undefined) => {
             resetStates();
