@@ -31,6 +31,9 @@ function App() {
   const [initialRiddlePosition, setInitialRiddlePosition] = useState(
     new Number(1)
   );
+  const [currentRiddlePosition, setCurrentRiddlePosition] = useState(
+    new Number(1)
+  );
   const leftLocationId = getRandomNumberInRange(2, 13, 1);
   const rightLocationId = getRandomNumberInRange(2, 13, leftLocationId);
 
@@ -125,7 +128,15 @@ function App() {
       <Toast ref={toast} />
       <div className="flex flex-column md:flex-row justify-content-center mb-3">
         <div className="flex-1 md:flex-none flex align-items-center justify-content-center m-2">
-          <InnKeeperOverlay onClick={() => easterEggCountIncrease()} />
+          <InnKeeperOverlay
+            onClick={() => easterEggCountIncrease()}
+            onGoBackToInnKeeperClick={() => {
+              setInitialRiddlePosition(1);
+              setCurrentRiddlePosition(1);
+              setEasterEggCount(0);
+            }}
+            currentPosition={currentRiddlePosition}
+          />
         </div>
         <div className="flex-1 md:flex-none flex align-items-center justify-content-center m-2">
           <QuestItemOverlay questItemData={questItemData} />
@@ -135,7 +146,10 @@ function App() {
       {(easterEggCount < 3 || easterEggCount == -1) && (
         <Riddle
           onClick={(value: string, id: Number) => checkValidity(value, id)}
-          onLocationSwitch={() => resetStates()}
+          onLocationSwitch={(locationId: Number) => {
+            resetStates();
+            setCurrentRiddlePosition(locationId);
+          }}
           riddleSolved={isRiddleSolved}
           initialRiddlePosition={initialRiddlePosition}
           riddlesData={riddlesData}
@@ -148,6 +162,7 @@ function App() {
             resetStates();
             setEasterEggCount(-1);
             setInitialRiddlePosition(locationId || 1);
+            setCurrentRiddlePosition(locationId || 1);
           }}
           leftLocation={fetchLocationById(riddlesData, leftLocationId)}
           rightLocation={fetchLocationById(riddlesData, rightLocationId)}

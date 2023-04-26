@@ -21,7 +21,7 @@ const Riddle = (props: any) => {
   function handleLocationSwitch(locationId: Number | undefined): void {
     if (locationId) {
       setRiddleData(fetchLocationTaskById(props.riddlesData, locationId));
-      props.onLocationSwitch();
+      props.onLocationSwitch(locationId);
     }
   }
 
