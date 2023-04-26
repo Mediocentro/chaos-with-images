@@ -18,6 +18,7 @@ import QuestItemOverlay from "./overlay-components/quest-items-overlay/QuestItem
 import EasterEgg from "./pages/easter-egg/EasterEgg";
 import getRandomNumberInRange from "./utils/RandomNumberGenerator";
 import { fetchLocationById } from "./utils/RiddlesDataUtil";
+import { Dialog } from "primereact/dialog";
 
 function App() {
   const toast = useRef<Toast>(null);
@@ -36,6 +37,7 @@ function App() {
   );
   const leftLocationId = getRandomNumberInRange(2, 13, 1);
   const rightLocationId = getRandomNumberInRange(2, 13, leftLocationId);
+  const [isRiddleVisible, setRiddleVisible] = useState(true);
 
   const riddlesData: Array<LocationTask> = JSON.parse(
     JSON.stringify(data["location-tasks"])
@@ -120,6 +122,9 @@ function App() {
     if (easterEggCount === -1) {
       return;
     }
+    if (easterEggCount >= 3) {
+      setCurrentRiddlePosition(15);
+    }
     setEasterEggCount(easterEggCount + 1);
   }
 
@@ -131,9 +136,10 @@ function App() {
           <InnKeeperOverlay
             onClick={() => easterEggCountIncrease()}
             onGoBackToInnKeeperClick={() => {
+              resetStates();
               setInitialRiddlePosition(1);
               setCurrentRiddlePosition(1);
-              setEasterEggCount(0);
+              setRiddleVisible(false);
             }}
             currentPosition={currentRiddlePosition}
           />
@@ -143,7 +149,17 @@ function App() {
         </div>
       </div>
 
-      {(easterEggCount < 3 || easterEggCount == -1) && (
+      {!isRiddleVisible && (
+        <Dialog
+          header="Hold Tight!"
+          visible={!isRiddleVisible}
+          onHide={() => setRiddleVisible(true)}
+        >
+          <p>You're heading back to the Inn.</p>
+        </Dialog>
+      )}
+
+      {(easterEggCount < 3 || easterEggCount == -1) && isRiddleVisible && (
         <Riddle
           onClick={(value: string, id: Number) => checkValidity(value, id)}
           onLocationSwitch={(locationId: Number) => {

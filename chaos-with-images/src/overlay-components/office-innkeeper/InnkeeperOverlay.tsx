@@ -42,7 +42,7 @@ const InnKeeperOverlay = (props: Props) => {
             you're craving chocolate but all you have are hot cross buns.
           </p>
           <div className="flex justify-content-center">
-            {props.currentPosition != 1 && (
+            {props.currentPosition != 1 && props.currentPosition != 15 && (
               <Button
                 type="button"
                 icon="pi pi-book"
