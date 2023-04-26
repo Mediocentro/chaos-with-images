@@ -12,11 +12,16 @@ interface Props {
   leftLocationId?: Number;
   rightLocationId?: Number;
   isNewQuestItem: boolean;
+  onTreasureRoomSwitch?: any;
 }
 
 const RiddleSolved = (props: Props) => {
   function handleLocationSwitch(locationId: Number | undefined): void {
     props.onClick(locationId);
+  }
+
+  function handleTreasureRoomSwitch() {
+    props.onTreasureRoomSwitch();
   }
 
   return (
@@ -54,6 +59,16 @@ const RiddleSolved = (props: Props) => {
                     props.riddle?.rightChoice || props.rightLocationId
                   )
                 }
+              ></Button>
+            </div>
+          )}
+          {props.riddle?.isNextRoomTreasureRoom && (
+            <div className="flex-1 md:flex-none flex align-items-center justify-content-center m-2">
+              <Button
+                icon="pi pi-flag-fill"
+                className="ml-2"
+                label="Treasure Room"
+                onClick={() => handleTreasureRoomSwitch()}
               ></Button>
             </div>
           )}

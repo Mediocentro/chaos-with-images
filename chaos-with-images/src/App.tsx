@@ -19,6 +19,7 @@ import EasterEgg from "./pages/easter-egg/EasterEgg";
 import getRandomNumberInRange from "./utils/RandomNumberGenerator";
 import { fetchLocationById } from "./utils/RiddlesDataUtil";
 import { Dialog } from "primereact/dialog";
+import { TreasureRoom } from "./pages/treasure-room/TreasureRoom";
 
 function App() {
   const toast = useRef<Toast>(null);
@@ -38,6 +39,7 @@ function App() {
   const leftLocationId = getRandomNumberInRange(2, 13, 1);
   const rightLocationId = getRandomNumberInRange(2, 13, leftLocationId);
   const [isRiddleVisible, setRiddleVisible] = useState(true);
+  const [isTreasureRoom, setTreasureRoom] = useState(false);
 
   const riddlesData: Array<LocationTask> = JSON.parse(
     JSON.stringify(data["location-tasks"])
@@ -130,62 +132,72 @@ function App() {
 
   return (
     <div className="App">
-      <Toast ref={toast} />
-      <div className="flex flex-column md:flex-row justify-content-center mb-3">
-        <div className="flex-1 md:flex-none flex align-items-center justify-content-center m-2">
-          <InnKeeperOverlay
-            onClick={() => easterEggCountIncrease()}
-            onGoBackToInnKeeperClick={() => {
-              resetStates();
-              setInitialRiddlePosition(1);
-              setCurrentRiddlePosition(1);
-              setRiddleVisible(false);
-            }}
-            currentPosition={currentRiddlePosition}
-          />
-        </div>
-        <div className="flex-1 md:flex-none flex align-items-center justify-content-center m-2">
-          <QuestItemOverlay questItemData={questItemData} />
-        </div>
-      </div>
+      {!isTreasureRoom && (
+        <div>
+          <Toast ref={toast} />
+          <div className="flex flex-column md:flex-row justify-content-center mb-3">
+            <div className="flex-1 md:flex-none flex align-items-center justify-content-center m-2">
+              <InnKeeperOverlay
+                onClick={() => easterEggCountIncrease()}
+                onGoBackToInnKeeperClick={() => {
+                  resetStates();
+                  setInitialRiddlePosition(1);
+                  setCurrentRiddlePosition(1);
+                  setRiddleVisible(false);
+                }}
+                currentPosition={currentRiddlePosition}
+              />
+            </div>
+            <div className="flex-1 md:flex-none flex align-items-center justify-content-center m-2">
+              <QuestItemOverlay questItemData={questItemData} />
+            </div>
+          </div>
 
-      {!isRiddleVisible && (
-        <Dialog
-          header="Hold Tight!"
-          visible={!isRiddleVisible}
-          onHide={() => setRiddleVisible(true)}
-        >
-          <p>You're heading back to the Inn.</p>
-        </Dialog>
-      )}
+          {!isRiddleVisible && (
+            <Dialog
+              header="Hold Tight!"
+              visible={!isRiddleVisible}
+              onHide={() => setRiddleVisible(true)}
+            >
+              <p>You're heading back to the Inn.</p>
+            </Dialog>
+          )}
 
-      {(easterEggCount < 3 || easterEggCount == -1) && isRiddleVisible && (
-        <Riddle
-          onClick={(value: string, id: Number) => checkValidity(value, id)}
-          onLocationSwitch={(locationId: Number) => {
-            resetStates();
-            setCurrentRiddlePosition(locationId);
-          }}
-          riddleSolved={isRiddleSolved}
-          initialRiddlePosition={initialRiddlePosition}
-          riddlesData={riddlesData}
-          isNewQuestItem={isNewQuestItem}
-        />
+          {(easterEggCount < 3 || easterEggCount == -1) &&
+            isRiddleVisible &&
+            !isTreasureRoom && (
+              <Riddle
+                onClick={(value: string, id: Number) =>
+                  checkValidity(value, id)
+                }
+                onLocationSwitch={(locationId: Number) => {
+                  resetStates();
+                  setCurrentRiddlePosition(locationId);
+                }}
+                riddleSolved={isRiddleSolved}
+                initialRiddlePosition={initialRiddlePosition}
+                riddlesData={riddlesData}
+                isNewQuestItem={isNewQuestItem}
+                handleTreasureRoomSwitch={() => setTreasureRoom(true)}
+              />
+            )}
+          {easterEggCount != -1 && easterEggCount >= 3 && (
+            <EasterEgg
+              onLocationSelection={(locationId: Number | undefined) => {
+                resetStates();
+                setEasterEggCount(-1);
+                setInitialRiddlePosition(locationId || 1);
+                setCurrentRiddlePosition(locationId || 1);
+              }}
+              leftLocation={fetchLocationById(riddlesData, leftLocationId)}
+              rightLocation={fetchLocationById(riddlesData, rightLocationId)}
+              leftLocationId={leftLocationId}
+              rightLocationId={rightLocationId}
+            />
+          )}
+        </div>
       )}
-      {easterEggCount != -1 && easterEggCount >= 3 && (
-        <EasterEgg
-          onLocationSelection={(locationId: Number | undefined) => {
-            resetStates();
-            setEasterEggCount(-1);
-            setInitialRiddlePosition(locationId || 1);
-            setCurrentRiddlePosition(locationId || 1);
-          }}
-          leftLocation={fetchLocationById(riddlesData, leftLocationId)}
-          rightLocation={fetchLocationById(riddlesData, rightLocationId)}
-          leftLocationId={leftLocationId}
-          rightLocationId={rightLocationId}
-        />
-      )}
+      {isTreasureRoom && <TreasureRoom />}
     </div>
   );
 }

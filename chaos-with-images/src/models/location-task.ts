@@ -12,4 +12,5 @@ export interface LocationTask {
     correctAnswer: string;
     successTextHtml: string;
     farewellMessage: string;
+    isNextRoomTreasureRoom?: boolean;
 }

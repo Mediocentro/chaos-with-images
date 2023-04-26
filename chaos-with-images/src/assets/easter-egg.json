@@ -1,10 +1,11 @@
 {
   "id": 15,
   "name": "Tarot Card Reader",
-  "imagePath": "https://drive.google.com/uc?export=view&id=1-fwdPghephaaP67Jjq55_ACyiVCR3dbd",
+  "imagePath": "https://drive.google.com/uc?export=view&id=1VZsH0XE_QSmHp8d-l2g_1VcztJsIx3Xj",
   "location": "Cloud pine draught",
-  "riddleHtml": "<p>Be seated, Maiden. For the quest of thine, my cards shall always give answers fine.</p>\n\n<p>Thou hast the Ace of Swords upright and the Ace of Wands upright. Doors that must open for thou will open with ease whenst thou needs it. And having become the master of the wisdom, the Hierophant, thou has gained on thy quest, thou will go forth with energy and positivity, from the Kingdom of Impseye!</p>\n",
+  "riddleHtml": "<p>Be seated, Maiden. For the quest of thine, my cards shall always give answers fine.</p>\n\n<p>Thou hast the Ace of Swords upright and the Ace of Wands upright. Doors that must open for thou will open with ease whenst thou needs it. And, like the Hierophant, having become the master of the wisdom thou has gained on thy quest, thou will go forth with energy and positivity, from the Kingdom of Impseye!</p>",
+  "questItem": null,
   "correctAnswer": "dGVzdA==",
-  "successTextHtml": "<p>Be seated, Maiden. For the quest of thine, my cards shall always give answers fine.</p>\n\n<p>Thou hast the Ace of Swords upright and the Ace of Wands upright. Doors that must open for thou will open with ease whenst thou needs it. And having become the master of the wisdom, the Hierophant, thou has gained on thy quest, thou will go forth with energy and positivity, from the Kingdom of Impseye!</p>\n",
+  "successTextHtml": "<p>Be seated, Maiden. For the quest of thine, my cards shall always give answers fine.</p>\n\n<p>Thou hast the Ace of Swords upright and the Ace of Wands upright. Doors that must open for thou will open with ease whenst thou needs it. And, like the Hierophant, having become the master of the wisdom thou has gained on thy quest, thou will go forth with energy and positivity, from the Kingdom of Impseye!</p>",
   "farewellMessage": "<p>Welcome child, to your next life, where I see for you many many moons of viral tweets, ganondorf, and open AO3 tabs.</p>"
 }

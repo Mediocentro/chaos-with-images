@@ -25,6 +25,10 @@ const Riddle = (props: any) => {
     }
   }
 
+  function handleTreasureRoomSwitch() {
+    props.handleTreasureRoomSwitch();
+  }
+
   return (
     <div>
       <div>
@@ -60,6 +64,7 @@ const Riddle = (props: any) => {
             handleLocationSwitch(locationId)
           }
           riddle={riddle}
+          onTreasureRoomSwitch={() => handleTreasureRoomSwitch()}
         />
       )}
     </div>
